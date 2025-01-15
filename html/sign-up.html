@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="index.css"> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign in</title>
@@ -19,18 +18,21 @@
             </div>
 
             <div class="authentication-info-container" id="sign-up-email-container">
-                <p class="authentication-info-header" id="esign-up-mail-header">Email</p>
-                <input class="authentication-info-input" id="sign-up-email-input" type="text" placeholder="example@gmail.com">
+                <p class="authentication-info-header" id="sign-up-mail-header">Email</p>
+                <input class="authentication-info-input authentication-email-input" id="sign-up-email-input" type="text" placeholder="example@gmail.com">
             </div>
 
             <div class="authentication-info-container" id="sign-up-sign-up-password-container">
                 <p class="authentication-info-header" id="sign-up-password-header">Password</p>
-                <input class="authentication-info-input" id="sign-up-password-input" type="password" placeholder="Create a password">
+                <input class="authentication-info-input authentication-password-input" id="sign-up-password-input" type="password" placeholder="Create a password">
             </div>
 
             <button class="authentication-button" id="sign-up-button">Sign up</button>
         </div>
         <a id="back-to-sign-in-link" href="../index.html">Back to sign in</a>
     </div>
+
+    <script type="module" src="../modules/firebase.mjs"></script>
+    <script type="module" src="../modules/authentication.mjs"></script>
 </body>
 </html> 
