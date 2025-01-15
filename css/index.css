@@ -1,10 +1,10 @@
+@font-face {
+    font-family: "KronaOne";
+    src: url("../assets/fonts/KronaOne-Regular.ttf") format("truetype");
+}
+
 body {
     height: 100vh;
     margin: 0;
     background: linear-gradient(to right, #A8BC96 50%, white 50%);
-}
-
-@font-face {
-    font-family: "KronaOne";
-    src: url("../assets/fonts/KronaOne-Regular.ttf") format("truetype");
 }
