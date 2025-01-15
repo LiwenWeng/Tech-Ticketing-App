@@ -1,7 +1,9 @@
 export const Enum = {
     "Error": {
-        InvalidEmail: "Invalid Email",
+        InvalidEmail: "Invalid email",
         MissingInput: "Missing input",
-        ShortPassword:  "Password is too short",
+        WeakPassword: "Password is too weak",
+        InvalidCredentials: "Invalid email or password",
+        EmailInUse: "Email already in use",
     }
 }
