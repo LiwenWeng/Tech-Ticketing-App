@@ -7,25 +7,25 @@
     <title>Sign in</title>
 
     <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/sign-in.css">
+    <link rel="stylesheet" href="css/authentication.css">
 </head>
 <body>
-    <div id="sign-in-container">
-        <h1 id="sign-in-title">Sign in.</h1>
-        <div id="sign-in">
-            <div class="sign-in-info-container" id="email-container">
-                <p class="sign-in-info-header" id="email-header">Email</p>
-                <input class="sign-in-info-input" id="email-input" type="text">
+    <div class="authentication-container">
+        <h1 class="authentication-title">Sign in.</h1>
+        <div class="authentication-main" id="sign-in-main">
+            <div class="authentication-info-container" id="email-container">
+                <p class="authentication-info-header" id="email-header">Email</p>
+                <input class="authentication-info-input" id="email-input" type="text" placeholder="example@gmail.com">
             </div>
 
-            <div class="sign-in-info-container" id="password-container">
-                <p class="sign-in-info-header" id="password-header">Password</p>
-                <input class="sign-in-info-input" id="password-input" type="text">
+            <div class="authentication-info-container" id="password-container">
+                <p class="authentication-info-header" id="password-header">Password</p>
+                <input class="authentication-info-input" id="password-input" type="password" placeholder="Enter your password here">
             </div>
 
-            <button id="sign-in-button">Sign in</button>
+            <button class="authentication-button">Sign in</button>
         </div>
-        <a id="account-creation" href="html/signup.html">Create an account</a>
+        <a id="account-creation-link" href="html/sign-up.html">Create an account</a>
     </div>
 </body>
 </html> 
