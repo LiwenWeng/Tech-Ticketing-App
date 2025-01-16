@@ -40,6 +40,10 @@
     margin-top: 2vmax;
 }
 
+#sign-in-main > * {
+    margin-top: 4vmax;
+}
+
 .authentication-info-container {
     margin-top: 3vmax;
     font-family: KronaOne;
@@ -81,6 +85,10 @@
 
 #sign-up-button {
     margin-top: 2.8vmax;
+}
+
+#sign-in-button {
+    margin-top: 5.5vmax;
 }
 
 .authentication-container a {
