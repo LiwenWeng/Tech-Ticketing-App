@@ -1,20 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="index.css"> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Authentication</title>
+    <title>Sign in</title>
+
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/authentication.css">
 </head>
 <body>
-    <h1>Welcome to the Ticketing App</h1>
-    <div class="auth-fields-and-buttons">
-        <input id="email-input" type="email" placeholder="Email">
-        <input id="password-input" type="password" placeholder="Password">
-        
-        <button id="sign-in-btn" class="primary-btn">Sign in</button>
-        <button id="create-account-btn" class="secondary-btn">Create Account</button>
+    <div class="authentication-container">
+        <h1 class="authentication-title">Sign in.</h1>
+        <div class="authentication-main" id="sign-in-main">
+            <div class="authentication-info-container" id="email-container">
+                <p class="authentication-info-header" id="email-header">Email</p>
+                <input class="authentication-info-input authentication-email-input" id="email-input" type="text" placeholder="example@gmail.com">
+            </div>
+
+            <div class="authentication-info-container" id="password-container">
+                <p class="authentication-info-header" id="password-header">Password</p>
+                <input class="authentication-info-input authentication-password-input" id="password-input" type="password" placeholder="Enter your password here">
+            </div>
+
+            <button class="authentication-button" id="sign-in-button">Sign in</button>
+        </div>
+        <a id="account-creation-link" href="html/sign-up.html">Create an account</a>
     </div>
-    <script src="index.js"></script>
+
+    <script type="module" src="modules/authentication.mjs"></script>
 </body>
-</html>
+</html> 
