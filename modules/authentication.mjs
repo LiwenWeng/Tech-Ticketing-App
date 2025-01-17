@@ -64,6 +64,8 @@ function handleInput(element, value) {
 })
 
 authenticationButton.onclick = () => {
+    if (auth.currentUser) window.location.assign("html/dashboard.html");
+
     const email = emailInput.value;
     const password = passwordInput.value;
 

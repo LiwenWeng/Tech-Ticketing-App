@@ -1,0 +1,70 @@
+.tickets-tab {
+    display: flex;
+    flex-direction: column;
+
+    position: fixed;
+    width: 5vmax;
+    height: 100vh;
+
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+
+    top: 0;
+    left: 0;
+
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 25%);
+    transition: all 0.5s ease, width 0.2s ease-out;
+}
+
+.tickets-tab.active {
+    width: 25vmax;
+}
+
+.tickets-tab:hover { 
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 50%);
+    background-color: rgba(168, 188, 150, 0.4);
+}
+
+.tickets-tab button {
+    margin-top: 2vmax;
+    width: 100%;
+    height: 5vmax;
+
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+}
+
+.tickets-tab button img {
+    width: 3.5vmax;
+    height: auto;
+}
+
+.tickets-tab button:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.tickets-tab.active button img {
+    position: fixed;
+    width: auto;
+    height: 3.5vmax;
+
+    margin-top: -2vmax;
+    margin-left: -12vmax;
+}
+
+.tickets-tab.active #closed-tickets-button img {
+    width: auto;
+    height: 2.2vmax;
+
+    margin-top: -1.2vmax;
+}
+
+.tickets-container {
+    position: absolute;
+    height: 100vh;
+    width: 90vw;
+    background-color: aqua;
+}

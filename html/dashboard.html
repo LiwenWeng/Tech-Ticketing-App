@@ -4,14 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
 </head>
 <body>
-    <div class="active-tickets">
-        <h3>Active Tickets</h3>
+    <div class="tickets-tab active">
+        <button id="active-tickets-button">
+            <img src="../assets/images/fire.png">
+        </button>
+        <button id="closed-tickets-button">
+            <img src="../assets/images/wood.png">
+        </button>
+        <button id="new-ticket-button">
+            <img src="../assets/images/match.png">
+        </button>
     </div>
-    <div class="resolved-tickets">
-        <h3>Closed Tickets</h3>
+
+    <div class="tickets-container">
+        
     </div>
-    <button id="new-ticket">New Ticket</button>
+
+    <script type="module" src="../modules/isSignedIn.mjs"></script>
+    <script type="module" src="../modules/dashboard.mjs"></script>
 </body>
 </html>

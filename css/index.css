@@ -4,7 +4,6 @@
 }
 
 body {
-    height: 100vh;
-    margin: 0;
-    background: linear-gradient(to right, #A8BC96 50%, white 50%);
+    background: linear-gradient(to right, #A8BC96, white);
+    overflow: hidden;
 }
