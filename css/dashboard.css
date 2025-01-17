@@ -1,6 +1,7 @@
 .tickets-tab {
     display: flex;
     flex-direction: column;
+    align-items: center;
 
     position: fixed;
     width: 5vmax;
@@ -42,13 +43,25 @@
     color: white;
 }
 
+.tickets-tab button:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.tickets-tab.active #new-ticket-button {
+    width: 70%;
+    background-color: #232323;
+    border-radius: 10px;
+
+    transition: transform 0.2s ease;
+}
+
+.tickets-tab.active #new-ticket-button:hover {
+    transform: scale(1.05);
+}
+
 .tickets-tab button img {
     width: 3.5vmax;
     height: auto;
-}
-
-.tickets-tab button:hover {
-    background-color: rgba(255, 255, 255, 0.4);
 }
 
 .tickets-tab.active button img {
@@ -70,7 +83,7 @@
 
 .tickets-tab.active #new-ticket-button img {
     margin-top: -1.2vmax;
-    margin-left: -15.5vmax;
+    margin-left: -12vmax;
 }
 
 .tickets-container {
