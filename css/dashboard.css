@@ -16,6 +16,8 @@
     background-color: rgba(255, 255, 255, 0.4);
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 25%);
     transition: all 0.5s ease, width 0.2s ease-out;
+
+    z-index: 1;
 }
 
 .tickets-tab.active {
@@ -35,6 +37,9 @@
     cursor: pointer;
     border: none;
     background-color: transparent;
+
+    font-family: KronaOne;
+    color: white;
 }
 
 .tickets-tab button img {
@@ -51,20 +56,30 @@
     width: auto;
     height: 3.5vmax;
 
-    margin-top: -2vmax;
-    margin-left: -12vmax;
+    margin-top: -1vmax;
+    margin-left: -16.7vmax;
 }
 
 .tickets-tab.active #closed-tickets-button img {
     width: auto;
     height: 2.2vmax;
 
+    margin-top: -0.4vmax;
+    margin-left: -17.5vmax;
+}
+
+.tickets-tab.active #new-ticket-button img {
     margin-top: -1.2vmax;
+    margin-left: -15.5vmax;
 }
 
 .tickets-container {
-    position: absolute;
+    position: fixed;
     height: 100vh;
-    width: 90vw;
-    background-color: aqua;
+    width: 100vw;
+
+    left: 5vmax;
+    top: 0;
+    
+    transition: left 0.5s ease;
 }
