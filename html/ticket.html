@@ -58,11 +58,13 @@
         <label for="description">Please describe the problem: </label>
         <input type="text" id="descriptionField">
     </div>
-    <button onclick="savedAlert()" id="back-btn">Go Back</button>
-    <!-- go back and alert that it has been saved -->
-    <button id="submit-btn">Submit</button>
+    <div class="buttons">
+        <button id="back-btn">Go Back</button>
+        <button id="save-btn">Save</button>
+        <button id="submit-btn">Submit</button>
+    </div>
 
-    <script src="../modules/ticket.js"></script>
+    <script type="module" src="../modules/tickets.mjs"></script>
     <script type="module" src="../modules/isSignedIn.mjs"></script>
 </body>
 </html>
