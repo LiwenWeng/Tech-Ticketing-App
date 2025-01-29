@@ -1,10 +1,5 @@
-import { getFirestore } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js"
-import { app } from "./firebase.mjs"
+import { firestore } from "./firebase.mjs"
 import { collection, addDoc } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js"
-
-const db = getFirestore(app)
-
-console.log(app)
  
 const descriptionFieldEl = document.getElementById("descriptionField")
 const submitButton = document.getElementById("submit-btn")
@@ -31,7 +26,7 @@ function save(){
 async function addTicketToDB(ticketBody) {
     save()
     try {
-        const docRef = await addDoc(collection(db, "tickets"), {
+        const docRef = await addDoc(collection(firestore, "tickets"), {
           type: fullTicket[0],
           affectedObjects: fullTicket[1],
           floorNum: fullTicket[2],

@@ -6,12 +6,19 @@ const ticketsTab = document.querySelector(".tickets-tab");
 const ticketsContainer = document.querySelector(".tickets-container");
 const newTicketButton = document.querySelector("#new-ticket-button");
 const signOutButton = document.querySelector("#sign-out-button");
+const tabOptions = Array.from(ticketsTab.children).slice(0, 3);
+const toggleTabButton = document.querySelector("#toggle-tab-button");
+
+const buttonNames = new Map();
+buttonNames.set("active-tickets-button", "Active Tickets");
+buttonNames.set("closed-tickets-button", "Closed Tickets");
+buttonNames.set("new-ticket-button", "New Ticket");
 
 const buttonToName = new Map();
-Array.from(ticketsTab.children).forEach((button) => buttonToName.set(button, `${button.classList[0]} ${button.classList[1]}`))
+tabOptions.forEach((button) => buttonToName.set(button, buttonNames.get(button.id)));
 
 function openTab() {
-    Array.from(ticketsTab.children).forEach((button) => {
+    tabOptions.forEach((button) => {
         button.insertAdjacentText("afterbegin", buttonToName.get(button));
     });
     ticketsContainer.style.left = "25vmax";
@@ -19,7 +26,7 @@ function openTab() {
 }
 
 function closeTab() {
-    Array.from(ticketsTab.children).forEach((button) => {
+    tabOptions.forEach((button) => {
         button.childNodes.forEach((node) => {
             if (node.nodeType === Node.TEXT_NODE) node.remove();
         });
@@ -28,7 +35,7 @@ function closeTab() {
     ticketsContainer.style.width = "95vmax";
 }
 
-ticketsTab.onclick = () => {
+toggleTabButton.onclick = () => {
     if (ticketsTab.classList.contains("active")) {
         ticketsTab.classList.remove("active");
         closeTab();

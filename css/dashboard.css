@@ -44,7 +44,7 @@
     color: white;
 }
 
-.tickets-tab button:hover {
+.tickets-tab > :nth-child(-n+3):hover {
     background-color: rgba(255, 255, 255, 0.4);
 }
 
@@ -88,8 +88,8 @@
 }
 
 #sign-out-button {
-    position: fixed;
-    margin-top: 71vmax;
+    position: absolute;
+    bottom: 0;
 
     background-image: url("../assets/images/signOut.png");
     background-size: cover;
@@ -101,4 +101,8 @@
     height: 3.5vmax;
 
     z-index: 10;
+}
+
+#toggle-tab-button {
+    height: 60%;
 }
