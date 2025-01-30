@@ -81,7 +81,9 @@ authenticationButton.onclick = () => {
     if (noneMissing) {
         if (isSignInPage) {
             signInWithEmailAndPassword(auth, email, password)
-                .then(() => window.location.assign("html/dashboard.html"))
+                .then(() => {
+                    window.location.assign("html/dashboard.html");
+                })
                 .catch(handleAuthError, "signing in");
         } else {
             createUserWithEmailAndPassword(auth, email, password)

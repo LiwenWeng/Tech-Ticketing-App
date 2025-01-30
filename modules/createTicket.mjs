@@ -1,3 +1,5 @@
+import { updateEditingTicket } from "./dashboard.mjs";
+import { deleteTicketFromFirestore, saveTicketToFirestore, ticketData } from "./data.mjs";
 import { createOptions } from "./utils/createOptions.mjs";
 
 const categoryOptions = [
@@ -20,16 +22,28 @@ const affectedDeviceOptions = [
     ["all", "All devices"],
 ]
 
-let id = 0;
+export let id = 0;
+export function updateId(newId) {
+    id = Math.max(id, newId);
+}
 
-export function createTicket(data) {
-    id++;
+export function createTicket(ticketId, data) {
+    let tId = undefined;
+    if (ticketId !== undefined) {
+        tId = ticketId;
+    } else {
+        id++;
+        tId = id;
+    }
+
+    console.log(tId);
 
     const container = document.createElement("div");
+    container.id = tId;
     container.classList.add("ticket-container");
 
     const category = document.createElement("select");
-    category.id = "ticket-category"; 
+    category.classList.add("ticket-category"); 
     createOptions(categoryOptions, category);
     category.value = data !== undefined ? data.category : "none";
     container.appendChild(category);
@@ -59,11 +73,34 @@ export function createTicket(data) {
     const saveTicketButton = document.createElement("button");
     saveTicketButton.classList.add("save-ticket-button");
     saveTicketButton.textContent = `Save Ticket`;
+    saveTicketButton.onclick = () => {
+        ticketData.active[tId] = {
+            category: category.value,
+            affectedDevices: affectedDevices.value,
+            roomNumber: roomNumber.value,
+            problem: problem.value,
+        }
+        saveTicketToFirestore(tId, "active", ticketData.active[tId]);
+        updateEditingTicket(false);
+    }
     buttonContainer.appendChild(saveTicketButton);
 
     const closeTicketButton = document.createElement("button");
     closeTicketButton.classList.add("close-ticket-button");
     closeTicketButton.textContent = `Close Ticket`;
+    closeTicketButton.onclick = () => {
+        delete ticketData.active[tId];
+        ticketData.closed[tId] = {
+            category: category.value,
+            affectedDevices: affectedDevices.value,
+            roomNumber: roomNumber.value,
+            problem: problem.value,
+        }
+        deleteTicketFromFirestore(tId, "active");
+        saveTicketToFirestore(tId, "closed", ticketData.closed[tId]);
+        container.remove();
+        updateEditingTicket(false);
+    }
     buttonContainer.appendChild(closeTicketButton);
 
     return container;

@@ -1,6 +1,9 @@
 import { signOut } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 import { auth } from "./firebase.mjs";
 import { createTicket } from "./createTicket.mjs";
+import { ticketData } from "./data.mjs";
+
+export const onLoaded = new EventTarget();
 
 const ticketsTab = document.querySelector(".tickets-tab");
 const ticketsContainer = document.querySelector(".tickets-container");
@@ -48,12 +51,36 @@ toggleTabButton.onclick = () => {
     }
 }
 
+export let editingTicket = false;
+export function updateEditingTicket(newValue) {
+    editingTicket = newValue;
+}
+
 newTicketButton.onclick = () => {
-    ticketsContainer.appendChild(createTicket());
+    if (!editingTicket) {
+        editingTicket = true;
+        ticketsContainer.appendChild(createTicket());
+    }
 }
 
-activeTicketsButton.onclick = () => {
-
+function populateTicketsContainer(status) {
+    const tickets = [];
+    Object.entries(ticketData[status]).forEach(([key, value]) => {
+        tickets.push(createTicket(key, value));
+    })
+    ticketsContainer.replaceChildren(...tickets);
 }
+
+onLoaded.addEventListener("loaded", () => {
+    populateTicketsContainer("active"); 
+    
+    activeTicketsButton.onclick = () => {
+        populateTicketsContainer("active");
+    }
+    
+    closedTicketsButton.onclick = () => {
+        populateTicketsContainer("closed");
+    }
+})
 
 signOutButton.onclick = () => signOut(auth);
