@@ -77,6 +77,12 @@
     font-family: "KronaOne";
     font-size: 0.7rem;
     cursor: pointer;
+
+    transition: transform 0.2s ease;
+}
+
+#ticket-button-container button:active {
+    transform: scale(1.05);
 }
 
 .save-ticket-button {

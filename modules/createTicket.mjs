@@ -27,7 +27,7 @@ export function updateId(newId) {
     id = Math.max(id, newId);
 }
 
-export function createTicket(ticketId, data) {
+export function createTicket(status, ticketId, data) {
     let tId = undefined;
     if (ticketId !== undefined) {
         tId = ticketId;
@@ -43,7 +43,7 @@ export function createTicket(ticketId, data) {
     container.classList.add("ticket-container");
 
     const category = document.createElement("select");
-    category.classList.add("ticket-category"); 
+    category.classList.add("ticket-category");
     createOptions(categoryOptions, category);
     category.value = data !== undefined ? data.category : "none";
     container.appendChild(category);
@@ -72,7 +72,7 @@ export function createTicket(ticketId, data) {
 
     const saveTicketButton = document.createElement("button");
     saveTicketButton.classList.add("save-ticket-button");
-    saveTicketButton.textContent = `Save Ticket`;
+    saveTicketButton.textContent = `Save Ticket #${tId}`;
     saveTicketButton.onclick = () => {
         ticketData.active[tId] = {
             category: category.value,
@@ -82,26 +82,33 @@ export function createTicket(ticketId, data) {
         }
         saveTicketToFirestore(tId, "active", ticketData.active[tId]);
         updateEditingTicket(false);
+        if (status === "closed") {
+            delete ticketData.closed[tId];
+            deleteTicketFromFirestore(tId, "closed");
+            container.remove();
+        }
     }
     buttonContainer.appendChild(saveTicketButton);
 
-    const closeTicketButton = document.createElement("button");
-    closeTicketButton.classList.add("close-ticket-button");
-    closeTicketButton.textContent = `Close Ticket`;
-    closeTicketButton.onclick = () => {
-        delete ticketData.active[tId];
-        ticketData.closed[tId] = {
-            category: category.value,
-            affectedDevices: affectedDevices.value,
-            roomNumber: roomNumber.value,
-            problem: problem.value,
+    if (status === "active") {
+        const closeTicketButton = document.createElement("button");
+        closeTicketButton.classList.add("close-ticket-button");
+        closeTicketButton.textContent = `Close Ticket`;
+        closeTicketButton.onclick = () => {
+            delete ticketData.active[tId];
+            ticketData.closed[tId] = {
+                category: category.value,
+                affectedDevices: affectedDevices.value,
+                roomNumber: roomNumber.value,
+                problem: problem.value,
+            }
+            deleteTicketFromFirestore(tId, "active");
+            saveTicketToFirestore(tId, "closed", ticketData.closed[tId]);
+            container.remove();
+            updateEditingTicket(false);
         }
-        deleteTicketFromFirestore(tId, "active");
-        saveTicketToFirestore(tId, "closed", ticketData.closed[tId]);
-        container.remove();
-        updateEditingTicket(false);
+        buttonContainer.appendChild(closeTicketButton);
     }
-    buttonContainer.appendChild(closeTicketButton);
 
     return container;
 }

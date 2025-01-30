@@ -59,27 +59,36 @@ export function updateEditingTicket(newValue) {
 newTicketButton.onclick = () => {
     if (!editingTicket) {
         editingTicket = true;
-        ticketsContainer.appendChild(createTicket());
+        ticketsContainer.appendChild(createTicket("active"));
     }
 }
 
 function populateTicketsContainer(status) {
     const tickets = [];
     Object.entries(ticketData[status]).forEach(([key, value]) => {
-        tickets.push(createTicket(key, value));
+        tickets.push(createTicket(status, key, value));
     })
     ticketsContainer.replaceChildren(...tickets);
 }
 
+activeTicketsButton.classList.add("active");
 onLoaded.addEventListener("loaded", () => {
     populateTicketsContainer("active"); 
     
     activeTicketsButton.onclick = () => {
+        if (editingTicket) return; 
+
         populateTicketsContainer("active");
+        activeTicketsButton.classList.add("active");
+        closedTicketsButton.classList.remove("active");
     }
     
     closedTicketsButton.onclick = () => {
+        if (editingTicket) return; 
+
         populateTicketsContainer("closed");
+        closedTicketsButton.classList.add("active");
+        activeTicketsButton.classList.remove("active");
     }
 })
 

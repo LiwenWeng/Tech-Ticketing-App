@@ -48,6 +48,10 @@
     background-color: rgba(255, 255, 255, 0.4);
 }
 
+.tickets-tab > :nth-child(-n+2).active {
+    background-color: rgba(126, 255, 145, 0.4);
+}
+
 .tickets-tab.active #new-ticket-button {
     width: 70%;
     background-color: #232323;
