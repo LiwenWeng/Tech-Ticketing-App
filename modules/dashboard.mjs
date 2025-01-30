@@ -4,10 +4,13 @@ import { createTicket } from "./createTicket.mjs";
 
 const ticketsTab = document.querySelector(".tickets-tab");
 const ticketsContainer = document.querySelector(".tickets-container");
-const newTicketButton = document.querySelector("#new-ticket-button");
 const signOutButton = document.querySelector("#sign-out-button");
-const tabOptions = Array.from(ticketsTab.children).slice(0, 3);
 const toggleTabButton = document.querySelector("#toggle-tab-button");
+
+const tabOptions = Array.from(ticketsTab.children).slice(0, 3);
+const activeTicketsButton = tabOptions[0];
+const closedTicketsButton = tabOptions[1];
+const newTicketButton = tabOptions[2];
 
 const buttonNames = new Map();
 buttonNames.set("active-tickets-button", "Active Tickets");
@@ -47,6 +50,10 @@ toggleTabButton.onclick = () => {
 
 newTicketButton.onclick = () => {
     ticketsContainer.appendChild(createTicket());
+}
+
+activeTicketsButton.onclick = () => {
+
 }
 
 signOutButton.onclick = () => signOut(auth);
